@@ -16,6 +16,8 @@ import javax.swing.border.EmptyBorder;
 import controller.Cadastrar;
 import controller.VerificaLogin;
 import java.awt.Rectangle;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class ViewLogin extends JFrame {
 
@@ -32,23 +34,29 @@ public class ViewLogin extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBounds(new Rectangle(0, 0, 500, 500));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblRikifoki = new JLabel("RIKIFOKI");
+		JLabel lblRikifoki = new JLabel("");
+		lblRikifoki.setIcon(new ImageIcon("C:\\Users\\anaju\\Documents\\Inatel\\Eng. Software\\Projeto Rikifoki\\logotam1.png"));
 		lblRikifoki.setFont(new Font("Showcard Gothic", Font.PLAIN, 30));
 		lblRikifoki.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRikifoki.setBounds(10, 11, 474, 145);
+		lblRikifoki.setBounds(10, 34, 474, 145);
 		contentPane.add(lblRikifoki);
 		
-		JLabel lblNewLabel = new JLabel("Usu\u00E1rio");
-		lblNewLabel.setBounds(119, 207, 46, 14);
+		JLabel lblNewLabel = new JLabel("USU\u00C1RIO");
+		lblNewLabel.setFont(new Font("DialogInput", Font.PLAIN, 14));
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(119, 207, 58, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Senha");
-		lblNewLabel_1.setBounds(119, 232, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("SENHA");
+		lblNewLabel_1.setFont(new Font("DialogInput", Font.PLAIN, 14));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(119, 244, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		textField = new JTextField();
@@ -57,27 +65,27 @@ public class ViewLogin extends JFrame {
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(209, 229, 149, 20);
+		passwordField.setBounds(209, 243, 149, 20);
 		contentPane.add(passwordField);
 		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnEntrar = new JButton("ENTRAR");
+		btnEntrar.setFont(new Font("DialogInput", Font.PLAIN, 11));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VerificaLogin.fazVerificacao();
 			}
 		});
-		btnEntrar.setBounds(10, 425, 110, 35);
+		btnEntrar.setBounds(296, 425, 89, 35);
 		contentPane.add(btnEntrar);
 		
-		JButton btnSair = new JButton("Sair");
+		JButton btnSair = new JButton("SAIR");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSair.setBounds(374, 425, 110, 35);
+		btnSair.setFont(new Font("DialogInput", Font.PLAIN, 11));
+		btnSair.setBounds(395, 425, 89, 35);
 		contentPane.add(btnSair);
 	}
 

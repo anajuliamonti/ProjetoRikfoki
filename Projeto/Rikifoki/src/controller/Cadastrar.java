@@ -3,11 +3,11 @@ package controller;
 import java.sql.SQLException;
 
 import model.Cliente;
-import view.ViewCadastrar;
+import view.ViewCadastrarCliente;
 
 public class Cadastrar {
 	
-	public static ViewCadastrar registrationScreen = new ViewCadastrar();
+	public static ViewCadastrarCliente registrationScreen = new ViewCadastrarCliente();
 	
 	public static void iniciaCadastro() {
 		registrationScreen.setVisible(true);
@@ -18,7 +18,7 @@ public class Cadastrar {
 		BancoDeDados bd = new BancoDeDados();
 				
 		// connect to database
-		bd.conectar("softwareeng");
+		bd.conectar("db_rikifoki");
 
 		// is connected ?
 		boolean x = bd.estaConectado();

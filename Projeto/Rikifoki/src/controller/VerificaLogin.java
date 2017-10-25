@@ -5,6 +5,7 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 import model.Login;
+import view.ViewCliente;
 import view.ViewInicial;
 
 public class VerificaLogin {

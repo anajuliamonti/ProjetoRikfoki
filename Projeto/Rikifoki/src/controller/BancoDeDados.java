@@ -40,15 +40,15 @@ public class BancoDeDados {
 
     public void CadastrarCliente(Cliente cliente) throws SQLException {
         String sql;
-        sql = "INSERT INTO cliente (CPF_CNPJ,Nome,Endereco,Contato,Email) VALUES (?,?,?,?,?)";
+        sql = "INSERT INTO cliente (Nome,Endereco,Contato,Email,CPF_CNPJ) VALUES (?,?,?,?,?)";
         
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, cliente.getCpf_cnpj());
-            ps.setString(2, cliente.getNome());
-            ps.setString(3, cliente.getEndereco());
-            ps.setString(4, cliente.getContato());
-            ps.setString(5, cliente.getEmail());
+            ps.setString(5, cliente.getCpf_cnpj());
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getEndereco());
+            ps.setString(3, cliente.getContato());
+            ps.setString(4, cliente.getEmail());
             ps.executeUpdate();
            
             ps = connection.prepareStatement(sql);
