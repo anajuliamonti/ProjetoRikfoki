@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Cliente;
+import model.Pedido;
+import model.Produto;
 
 public class BancoDeDados {
 
@@ -30,7 +32,7 @@ public class BancoDeDados {
         }
     }
 
-    public boolean estaConectado() {
+    public boolean estaConectado	() {
         if (connection != null) {
             return true;
         } else {
@@ -44,11 +46,61 @@ public class BancoDeDados {
         
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(5, cliente.getCpf_cnpj());
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getEndereco());
             ps.setString(3, cliente.getContato());
             ps.setString(4, cliente.getEmail());
+            ps.setString(5, cliente.getCpf_cnpj());
+            ps.executeUpdate();
+           
+            ps = connection.prepareStatement(sql);
+            ps.executeUpdate();
+            
+            
+        } catch (Exception e) {
+            System.out.println("Erro cadastro = "+e);
+        }
+
+    }
+    
+    public void CadastrarProduto(Produto produto) throws SQLException {
+        String sql;
+        sql = "INSERT INTO produto (Referencia,QuantidadeProd,CustoUnit,CustoLote,PrecoVendaUnit,Pedido_ReferenciaPed) VALUES (?,?,?,?,?,?)";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, produto.getReferencia());
+            ps.setInt(2, produto.getQuantidade());
+            ps.setDouble(3, produto.getCustoUnit());
+            ps.setDouble(4, (produto.getQuantidade() * produto.getCustoUnit()));
+            ps.setDouble(5,produto.getPrecoVenda());
+            ps.setInt(6, 0);
+
+            ps.executeUpdate();
+           
+            ps = connection.prepareStatement(sql);
+            ps.executeUpdate();
+            
+            
+        } catch (Exception e) {
+            System.out.println("Erro cadastro = "+e);
+        }
+
+    }
+    
+    public void CadastrarPedido(Pedido pedido) throws SQLException {
+        String sql;
+        sql = "INSERT INTO pedido (NumBloco,ReferenciaPed,DataVencimento,Pedidoscol,QuantProd,Cliente_CPF_CNPJ) VALUES (?,?,?,?,?,?)";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, pedido.getNumBloco());
+            ps.setInt(2, pedido.getReferenciaPed());
+            ps.setString(3, pedido.getDataVencimento());
+            ps.setString(4, pedido.getPedidoscol());
+            ps.setInt(5, pedido.getQuantProd());
+            ps.setInt(6, 123456789);
+
             ps.executeUpdate();
            
             ps = connection.prepareStatement(sql);

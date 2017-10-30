@@ -106,7 +106,7 @@ public class ViewCadastrarCliente extends JFrame {
 					cliente.setEndereco(textField_1.getText());
 					cliente.setContato(textField_2.getText());
 					cliente.setEmail(textField_3.getText());
-					Cadastrar.fazCadastro(cliente);
+					Cadastrar.fazCadastroCliente(cliente);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -139,8 +139,14 @@ public class ViewCadastrarCliente extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton AddProdutoButton = new JButton("ADICIONAR PEDIDO");
+		AddProdutoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewCadastrarPedido cadastrarpedidoview = new ViewCadastrarPedido();
+				cadastrarpedidoview.setVisible(true);
+			}
+		});
 		AddProdutoButton.setFont(new Font("DialogInput", Font.PLAIN, 11));
-		AddProdutoButton.setBounds(101, 318, 145, 35);
+		AddProdutoButton.setBounds(101, 318, 170, 35);
 		contentPane.add(AddProdutoButton);
 	}
 

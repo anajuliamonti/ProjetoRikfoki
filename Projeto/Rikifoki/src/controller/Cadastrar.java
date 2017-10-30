@@ -2,7 +2,7 @@ package controller;
 
 import java.sql.SQLException;
 
-import model.Cliente;
+import model.*;
 import view.ViewCadastrarCliente;
 
 public class Cadastrar {
@@ -13,7 +13,7 @@ public class Cadastrar {
 		registrationScreen.setVisible(true);
 	}
 
-	public static void fazCadastro(Cliente cliente) throws SQLException {
+	public static void fazCadastroCliente(Cliente cliente) throws SQLException {
 
 		BancoDeDados bd = new BancoDeDados();
 				
@@ -26,7 +26,47 @@ public class Cadastrar {
 
 		// Database functions
 		bd.CadastrarCliente(cliente);
-		bd.LerBanco();
+		//bd.LerBanco();
+		
+		// close database
+		bd.FecharBanco();
+
+	}
+	
+	public static void fazCadastroProduto(Produto produto) throws SQLException {
+
+		BancoDeDados bd = new BancoDeDados();
+				
+		// connect to database
+		bd.conectar("db_rikifoki");
+
+		// is connected ?
+		boolean x = bd.estaConectado();
+		System.out.println("Esta conectado? = " + x);
+
+		// Database functions
+		bd.CadastrarProduto(produto);
+		//bd.LerBanco();
+		
+		// close database
+		bd.FecharBanco();
+
+	}
+	
+	public static void fazCadastroPedido(Pedido pedido) throws SQLException {
+
+		BancoDeDados bd = new BancoDeDados();
+				
+		// connect to database
+		bd.conectar("db_rikifoki");
+
+		// is connected ?
+		boolean x = bd.estaConectado();
+		System.out.println("Esta conectado? = " + x);
+
+		// Database functions
+		bd.CadastrarPedido(pedido);
+		//bd.LerBanco();
 		
 		// close database
 		bd.FecharBanco();
@@ -38,7 +78,7 @@ public class Cadastrar {
 		BancoDeDados bd = new BancoDeDados();
 				
 		// connect to database
-		bd.conectar("softwareeng");
+		bd.conectar("db_rikifoki");
 
 		// is connected ?
 		boolean x = bd.estaConectado();
