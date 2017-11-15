@@ -2,23 +2,37 @@ package model;
 
 public class Pedido {
 	
-	private int NumBloco;
-	private int ReferenciaPed;
+	private String ReferenciaPed;
 	private String DataVencimento;
 	private String Pedidoscol;
 	private int QuantProd;
+	private String cpf_cliente;
 	
+	public static String[] getAtributes () {
+		String[] r = {"ReferenciaPed", "DataVencimento", "Pedidoscol", "QuantProd"};
+		return r;
+	}
 	
-	public int getNumBloco() {
-		return NumBloco;
+	public Object[] getInfo() {
+		Object[] r = new Object[4];
+		r[0] = ReferenciaPed;
+		r[1] = DataVencimento;
+		r[2] = Pedidoscol;
+		r[3] = QuantProd;
+		
+		return r;
 	}
-	public void setNumBloco(int numBloco) {
-		NumBloco = numBloco;
+	
+	public String getCpf_cliente() {
+		return cpf_cliente;
 	}
-	public int getReferenciaPed() {
+	public void setCpf_cliente(String cpf_cliente) {
+		this.cpf_cliente = cpf_cliente;
+	}
+	public String getReferenciaPed() {
 		return ReferenciaPed;
 	}
-	public void setReferenciaPed(int referenciaPed) {
+	public void setReferenciaPed(String referenciaPed) {
 		ReferenciaPed = referenciaPed;
 	}
 	public String getDataVencimento() {

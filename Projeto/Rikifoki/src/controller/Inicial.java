@@ -9,6 +9,7 @@ public class Inicial {
 		// TODO Auto-generated method stub
 		
 		loginscreen = new ViewLogin();
+		loginscreen.setLocationRelativeTo(null);
 		loginscreen.setVisible(true);
 		
 	}

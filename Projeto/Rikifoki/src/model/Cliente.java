@@ -8,6 +8,21 @@ public class Cliente {
 	private String email;
 	private String cpf_cnpj;
 	
+	public static String[] getAtributes () {
+		String[] r = {"nome", "endereco", "contato", "email", "cpf/cnpj"};
+		return r;
+	}
+	
+	public Object[] getInfo() {
+		Object[] r = new Object[5];
+		r[0] = nome;
+		r[1] = endereco;
+		r[2] = contato;
+		r[3] = email;
+		r[4] = cpf_cnpj;
+		
+		return r;
+	}
 	
 	public String getNome() {
 		return nome;

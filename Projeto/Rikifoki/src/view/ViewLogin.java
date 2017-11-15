@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import controller.Cadastrar;
 import controller.VerificaLogin;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
@@ -41,7 +40,7 @@ public class ViewLogin extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblRikifoki = new JLabel("");
-		lblRikifoki.setIcon(new ImageIcon("C:\\Users\\anaju\\Documents\\Inatel\\Eng. Software\\Projeto Rikifoki\\logotam1.png"));
+		lblRikifoki.setIcon(new ImageIcon("C:\\Software Enginnering\\ProjetoRikfoki\\Projeto\\Rikifoki\\src\\logo.jpeg"));
 		lblRikifoki.setFont(new Font("Showcard Gothic", Font.PLAIN, 30));
 		lblRikifoki.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRikifoki.setBounds(10, 34, 474, 145);
@@ -72,7 +71,9 @@ public class ViewLogin extends JFrame {
 		btnEntrar.setFont(new Font("DialogInput", Font.PLAIN, 11));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VerificaLogin.fazVerificacao();
+				boolean x = VerificaLogin.fazVerificacao();
+				if(x) dispose();
+				
 			}
 		});
 		btnEntrar.setBounds(296, 425, 89, 35);
@@ -88,7 +89,7 @@ public class ViewLogin extends JFrame {
 		btnSair.setBounds(395, 425, 89, 35);
 		contentPane.add(btnSair);
 	}
-
+	
 	public JTextField getTextField() {
 		return textField;
 	}

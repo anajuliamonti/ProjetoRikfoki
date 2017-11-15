@@ -12,8 +12,7 @@ import model.Produto;
 
 public class BancoDeDados {
 
-    private Connection connection = null;
-    private PreparedStatement ps = null;
+    public static Connection connection = null;
 
     public void conectar(String database) throws SQLException{
         String servidor = "jdbc:mysql://localhost:3306/" + database;
@@ -21,9 +20,9 @@ public class BancoDeDados {
         String senha = "root";
         try {
         
-           // Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(servidor,usuario,senha);
-            System.out.println("Conectado? "+estaConectado());
+            //System.out.println("Conectado? "+ estaConectado());
           
         }
 
@@ -32,127 +31,16 @@ public class BancoDeDados {
         }
     }
 
-    public boolean estaConectado	() {
+    public boolean estaConectado() {
         if (connection != null) {
             return true;
         } else {
             return false;
         }
     }
-
-    public void CadastrarCliente(Cliente cliente) throws SQLException {
-        String sql;
-        sql = "INSERT INTO cliente (Nome,Endereco,Contato,Email,CPF_CNPJ) VALUES (?,?,?,?,?)";
-        
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getEndereco());
-            ps.setString(3, cliente.getContato());
-            ps.setString(4, cliente.getEmail());
-            ps.setString(5, cliente.getCpf_cnpj());
-            ps.executeUpdate();
-           
-            ps = connection.prepareStatement(sql);
-            ps.executeUpdate();
-            
-            
-        } catch (Exception e) {
-            System.out.println("Erro cadastro = "+e);
-        }
-
-    }
-    
-    public void CadastrarProduto(Produto produto) throws SQLException {
-        String sql;
-        sql = "INSERT INTO produto (Referencia,QuantidadeProd,CustoUnit,CustoLote,PrecoVendaUnit,Pedido_ReferenciaPed) VALUES (?,?,?,?,?,?)";
-        
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setInt(1, produto.getReferencia());
-            ps.setInt(2, produto.getQuantidade());
-            ps.setDouble(3, produto.getCustoUnit());
-            ps.setDouble(4, (produto.getQuantidade() * produto.getCustoUnit()));
-            ps.setDouble(5,produto.getPrecoVenda());
-            ps.setInt(6, 0);
-
-            ps.executeUpdate();
-           
-            ps = connection.prepareStatement(sql);
-            ps.executeUpdate();
-            
-            
-        } catch (Exception e) {
-            System.out.println("Erro cadastro = "+e);
-        }
-
-    }
-    
-    public void CadastrarPedido(Pedido pedido) throws SQLException {
-        String sql;
-        sql = "INSERT INTO pedido (NumBloco,ReferenciaPed,DataVencimento,Pedidoscol,QuantProd,Cliente_CPF_CNPJ) VALUES (?,?,?,?,?,?)";
-        
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setInt(1, pedido.getNumBloco());
-            ps.setInt(2, pedido.getReferenciaPed());
-            ps.setString(3, pedido.getDataVencimento());
-            ps.setString(4, pedido.getPedidoscol());
-            ps.setInt(5, pedido.getQuantProd());
-            ps.setInt(6, 123456789);
-
-            ps.executeUpdate();
-           
-            ps = connection.prepareStatement(sql);
-            ps.executeUpdate();
-            
-            
-        } catch (Exception e) {
-            System.out.println("Erro cadastro = "+e);
-        }
-
-    }
     
     public void FecharBanco() throws SQLException
     {
         connection.close();
     }
-
-    public void EditarCliente(String cpf_cnpj_buscado, Cliente cliente) throws SQLException
-    {
-        String sql;
-        sql = "UPDATE cliente SET Nome = ?, Endereco = ?, Contato = ?, Email = ? WHERE CPF_CNPJ = ?";
-        
-        ps = connection.prepareStatement(sql);
-        ps.setString(1, cliente.getNome());
-        ps.setString(2, cliente.getEndereco());
-        ps.setString(3, cliente.getContato());
-        ps.setString(4, cliente.getEmail());
-        ps.setString(5, cpf_cnpj_buscado);
-        
-        ps.executeUpdate();
-        
-    }
-    
-    public void LerBanco() throws SQLException
-    {
-        String sql;
-        sql = "select * from cliente order by 1";
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-        
-        while(rs.next())
-        {
-            System.out.println("CPF/CNPJ = " + rs.getString("CPF_CNPJ"));
-            System.out.println("Nome = " + rs.getString("Nome"));
-            System.out.println("Endereco = " + rs.getString("Endereco"));
-            System.out.println("Contato = " + rs.getString("Contato"));
-            System.out.println("Email = " + rs.getString("Email"));
-        }
-        
-        rs.close();
-        ps.close();
-        
-    }
-    
 }

@@ -44,7 +44,9 @@ public class ViewInicial extends JFrame {
 		ProdutoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewProduto produtoview = new ViewProduto();
+				produtoview.setLocationRelativeTo(null);
 				produtoview.setVisible(true);
+				dispose();
 			}
 		});
 		ProdutoButton.setFont(new Font("DialogInput", Font.PLAIN, 11));
@@ -55,7 +57,9 @@ public class ViewInicial extends JFrame {
 		ClienteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewCliente clienteview = new ViewCliente();
+				clienteview.setLocationRelativeTo(null);
 				clienteview.setVisible(true);
+				dispose();
 			}
 		});
 		ClienteButton.setFont(new Font("DialogInput", Font.PLAIN, 11));
@@ -66,7 +70,9 @@ public class ViewInicial extends JFrame {
 		PedidoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewPedido1 pedido1view = new ViewPedido1();
+				pedido1view.setLocationRelativeTo(null);
 				pedido1view.setVisible(true);
+				dispose();
 			}
 		});
 		PedidoButton.setFont(new Font("DialogInput", Font.PLAIN, 11));
@@ -76,6 +82,9 @@ public class ViewInicial extends JFrame {
 		JButton VoltarButton = new JButton("VOLTAR");
 		VoltarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ViewLogin telaLogin = new ViewLogin();
+				telaLogin.setLocationRelativeTo(null);
+				telaLogin.setVisible(true);
 				dispose();
 			}
 		});
